@@ -3,7 +3,7 @@
 #include "serialib.h"
 
 #define SERIAL_PORT "/dev/USB_ARDUINO"
-#define BAUDS 115200 //vitesse des données (bit/sec)
+#define BAUDS 9600 //vitesse des données (bit/sec)
 
 serialib init_serial(){
     serialib serial;
