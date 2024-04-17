@@ -31,8 +31,6 @@ int main(int argc, char *argv[]) {
 
     std::string toSend = "G " + line + "\n";
 
-    std::cout << toSend << std::endl;
-
     serial.writeBytes(toSend.c_str(), toSend.length());
 
     serial.closeDevice();
