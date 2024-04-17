@@ -2,7 +2,7 @@
 #include <iostream>
 #include "serialib.h"
 
-#define SERIAL_PORT "/dev/ttyACM0"
+#define SERIAL_PORT "/dev/USB_ARDUINO"
 #define BAUDS 115200 //vitesse des données (bit/sec)
 
 serialib init_serial(){
