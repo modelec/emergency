@@ -3,7 +3,9 @@
 #include "serialib.h"
 
 #define SERIAL_PORT "/dev/USB_ARDUINO"
-#define BAUDS 9600 //vitesse des données (bit/sec)
+#define MAX_MESSAGE_LEN 1048
+#define TIME_OUT 500
+#define BAUDS 115200 //vitesse des données (bit/sec)
 
 serialib init_serial(){
     serialib serial;
@@ -23,15 +25,21 @@ int main(int argc, char *argv[]) {
 
     std::ifstream file;
     file.open(filePath);
-
     std::string line;
     getline(file, line);
 
     serialib serial = init_serial();
 
-    std::string toSend = "G " + line + "\n";
+    int errorCode;
+    char myString[MAX_MESSAGE_LEN] = {0};
 
-    serial.writeBytes(toSend.c_str(), toSend.length());
+    std::string toSend = "G " + line + "\n";
+    strcpy(myString, toSend.c_str());
+    myString[strlen(myString)] = '\0';
+
+    errorCode = serial.writeBytes(toSend.c_str(), toSend.length());
+
+    std::cout << "Code received: " << errorCode << std::endl;
 
     serial.closeDevice();
     file.close();
