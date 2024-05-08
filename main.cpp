@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
 
     serialib serial = init_serial();
 
+    std::cout << serial.isDeviceOpen() << std::endl;
+
     char myString[MAX_MESSAGE_LEN] = {0};
 
     std::string toSend = "G " + line + "\n";
